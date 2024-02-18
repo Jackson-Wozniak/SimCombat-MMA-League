@@ -7,7 +7,7 @@ MMA League Overview (subject to change, has not been implemented as of this writ
   - Time starts based on the date the program is first run, but doesn't match real time
   - Events are held every 1-hour real time, equal to 1 week (each Saturday) in game
   - Event names start at 1 and follow from there ({League Name} 2, {League Name} 3...)
-  - Fights are scheduled 4 weeks in advance, so a 4 week schedule always exists
+  - Fights are scheduled 4 weeks in advance, so a 4-week schedule always exists
   - Fights are chosen based on ELO within a weight class
   - Fighters cannot have more than one scheduled bouts at a time. No injuries/backups occur in this simulation
 - Fighters
@@ -43,3 +43,39 @@ MMA League Overview (subject to change, has not been implemented as of this writ
     - Aging fighters also lose longevity at a faster rate than their younger counterparts. Age is based on in game time (their birthday is all that is directly associated with the fighter, age is calculated from that)
     - TO BE DETERMINED: may add some type of "motivation" score that affects the rate that grade changes
     - TO BE DETERMINED: not sure how grade will change as of right now, but will be based partially off fight results
+
+
+
+# Class Blueprint
+
+### WeightClass (CLASS)
+##### Attributes
+weight: int (ID)
+List<Fighter> fighters - A list of up 12 to 32 fighters (12 ranked, up to 20 unranked). Sort by ELO to determine rankings in each weight class
+##### Interactions with other classes
+- Holds list of pointers to fighters in database
+- Aggregates & sorts fighters of the same class when generating matches
+##### Related API Endpoints
+
+
+### Event (CLASS)
+##### Attributes
+name: String (ID)
+date: LocalDateTime
+List<Fight> fights - 10 fights (at least 4 involve at 1 or more ranked fighter)
+##### Interactions with other classes
+##### Related API endpoints
+
+### PastEvent (CLASS)
+##### Attributes
+name: String (ID)
+date: LocalDateTime
+List<PastFight> fights - all fights from the event with the result & fighter names
+##### Interactions with other classes
+- Generated from Event class once event is processed and completed
+- Separate entity in database
+##### Related API endpoints
+- getAllPastEvents()
+- getPastEvent(name)
+- getPastEvent(date)
+- getPastEvents(startDate, endDate)
