@@ -1,13 +1,19 @@
-Tournament Blueprints
-- 16 fighter bracket system
-- fighters are generated randomly
-- fighters have attributes (skill level, discipline, discipline level, stamina, toughness)
-- bouts are simulated and results are based on a mix of random chance and fighter attribute and style matchups
-
-Future Features
-- Make multiple events leading up to the tournaments that will set the tournament rankings
-- Make the program resemble a "league" (like UFC) with rankings based on timed events
-- Make events happen every friday, with the ability to skip time to pass events
-- ability to create your own fighter
-- upgrade your fighter to compete at higher levels
-- Multiple levels of tournaments (pro, amateur, etc)
+MMA League Overview (subject to change, has not been implemented as of this writing)
+- 8 weight classes, each with 12 ranked fighters and up to a total of 20 non-ranked fighters
+- Events are held weekly. Events have 10 fights, with a main and co main event
+  - 4 fights per event involve at least 1 ranked fighter
+  - Fights are simulated, this program exists solely through an API that updates automatically
+  - Rankings are updated post event
+  - Time starts based on the date the program is first run, but doesn't match real time
+  - Events are held every 1-hour real time, equal to 1 week (each Saturday) in game
+  - Event names start at 1 and follow from there ({League Name} 2, {League Name} 3...)
+  - Fights are scheduled 4 weeks in advance, so a 4 week schedule always exists
+  - Fights are chosen based on ELO within a weight class
+- Fighters
+  - Alongside rankings, fighters have an ELO score that allows for non-ranked fighters to fight those with ranks
+  - This ELO is what decides the ranking behind the scenes
+  - Each fighter has stats & attributes (details will be given later for these things)
+  - Each fighter has a legacy score within their stats, so a leaderboard of the GOAT can be made
+  - Legacy score will be updated with each fight. The primary way to receive this is to become champ and defend the belt
+  - Fighters retire, which allows for an opening in the weight class
+  - Fighters that dip below an ELO value will be kicked out, also allowing for opening in weight class
