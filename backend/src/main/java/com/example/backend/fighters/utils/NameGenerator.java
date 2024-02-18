@@ -1,9 +1,11 @@
 package com.example.backend.fighters.utils;
 
 import com.example.backend.fighters.exception.NameGenerationException;
+import com.sun.tools.javac.Main;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -17,8 +19,8 @@ Last name is added after from last_names.txt
  */
 public class NameGenerator {
 
-    private static final String txtFirstNames = "backend/src/main/resources/text/first_names.txt";
-    private static final String txtLastNames = "backend/src/main/resources/text/last_names.txt";
+    private static final String txtFirstNames = "text/first_names.txt";
+    private static final String txtLastNames = "text/last_names.txt";
     private static final Random random = new Random();
 
     public static String createRandomName() {
@@ -32,12 +34,20 @@ public class NameGenerator {
 
     private static String randomName(String fileName){
         try{
-            List<String> allNames = Files.readAllLines(Paths.get(fileName));
+            List<String> allNames = Files.readAllLines(Paths.get(Main.class.getClassLoader().getResource(txtFirstNames).toURI()));
             int randomLine = random.nextInt(allNames.size());
 
             return allNames.get(randomLine);
-        }catch (IOException ex){
+        }catch (Exception ex){
             throw new NameGenerationException("Cannot read from file: " + fileName);
         }
+    }
+
+    //ensures only first letter is upper case
+    private String formatName(String rawName){
+        rawName = rawName.toLowerCase();
+        rawName = rawName.substring(0, 1).toUpperCase() + rawName.substring(1);
+
+        return rawName;
     }
 }
