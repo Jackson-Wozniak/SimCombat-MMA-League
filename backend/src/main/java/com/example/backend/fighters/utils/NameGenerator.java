@@ -37,16 +37,16 @@ public class NameGenerator {
             List<String> allNames = Files.readAllLines(Paths.get(Main.class.getClassLoader().getResource(txtFirstNames).toURI()));
             int randomLine = random.nextInt(allNames.size());
 
-            return allNames.get(randomLine);
+            return formatName(allNames.get(randomLine));
         }catch (Exception ex){
             throw new NameGenerationException("Cannot read from file: " + fileName);
         }
     }
 
     //ensures only first letter is upper case
-    private String formatName(String rawName){
+    private static String formatName(String rawName){
         rawName = rawName.toLowerCase();
-        rawName = rawName.substring(0, 1).toUpperCase() + rawName.substring(1);
+        rawName = rawName.substring(0, 1).toUpperCase() + rawName.substring(1).toLowerCase();
 
         return rawName;
     }
