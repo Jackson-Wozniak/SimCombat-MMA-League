@@ -9,6 +9,7 @@ MMA League Overview (subject to change, has not been implemented as of this writ
   - Event names start at 1 and follow from there ({League Name} 2, {League Name} 3...)
   - Fights are scheduled 4 weeks in advance, so a 4 week schedule always exists
   - Fights are chosen based on ELO within a weight class
+  - Fighters cannot have more than one scheduled bouts at a time. No injuries/backups occur in this simulation
 - Fighters
   - Alongside rankings, fighters have an ELO score that allows for non-ranked fighters to fight those with ranks
   - This ELO is what decides the ranking behind the scenes
@@ -17,3 +18,28 @@ MMA League Overview (subject to change, has not been implemented as of this writ
   - Legacy score will be updated with each fight. The primary way to receive this is to become champ and defend the belt
   - Fighters retire, which allows for an opening in the weight class
   - Fighters that dip below an ELO value will be kicked out, also allowing for opening in weight class
+- Fighter Details
+  - Each fighter has name, weight & age (birthday)
+  - TO BE DETERMINED: may add some type of fan tracker that determines how popular fighters are
+  - Stats
+    - Fighter records are updated after each bout
+    - ELO is updated after each bout
+    - Rankings are not directly saved. Instead, the weight classes sort the fighters by ELO to determine rank
+    - Fighter champion rank is kept as enum. Determines event order priority & legacy score changes. Values: Champion, Past Champion, Ranked, Non-Ranked
+    - Legacy Score
+      - Legacy score determines the historical order of fighters. Those that retire are added to hall of fame if legacy score is high enough after retirement 
+      - Those with a high enough legacy score are still allowed in hall of fame even if they are kicked out of weight class due to low ELO 
+      - Legacy score changes are determined by the fighter champion rank, type of win etc.
+    - Knockout, submission, decision wins/losses are tracked
+  - Attributes
+    - Fighters have a discipline (fighting style). Values: mixed martial artist, jiu jitsu, wrestling, kickboxing
+    - Discipline level determine how successful they are with whatever style they have
+    - Alongside discipline level, fighters have a general grade (0-100) that determines there overall ability
+    - Fighters with higher discipline level & grades will have a higher chance of success
+    - Longevity score is updated after each fight. Cannot go back up & once it hits 0 the fighter retires. Types of wins/losses affect the rate that this changes after a fight
+    - Exact statistical model relating grade/level to performance is yet to be determined
+    - Fighter longevity slightly affects the grade of the fighter, but not by a wide margin
+    - Rather, aging fighters lose grade points faster, but often keep discipline level
+    - Aging fighters also lose longevity at a faster rate than their younger counterparts. Age is based on in game time (their birthday is all that is directly associated with the fighter, age is calculated from that)
+    - TO BE DETERMINED: may add some type of "motivation" score that affects the rate that grade changes
+    - TO BE DETERMINED: not sure how grade will change as of right now, but will be based partially off fight results
