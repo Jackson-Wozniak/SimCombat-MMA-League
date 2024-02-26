@@ -3,19 +3,15 @@ package com.example.backend.fighters.utils;
 import com.example.backend.fighters.exception.NameGenerationException;
 import com.sun.tools.javac.Main;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
 
 /*
 Utility class that generates random names from 2 text files.
-First name is found randomly from first_names.txt
-Last name is added after from last_names.txt
+First name is found randomly from resources/first_names.txt
+Last name is added after from resources/last_names.txt
  */
 public class NameGenerator {
 
@@ -25,27 +21,32 @@ public class NameGenerator {
 
     public static String createRandomName() {
         StringBuilder generatedName = new StringBuilder();
-        generatedName.append(randomName(txtFirstNames));
+        String firstname = randomName(getAllNames(txtFirstNames));
+        String lastname = randomName(getAllNames(txtLastNames));
+        generatedName.append(firstname);
         generatedName.append(" ");
-        generatedName.append(randomName(txtLastNames));
+        generatedName.append(lastname);
 
         return generatedName.toString();
     }
 
-    private static String randomName(String fileName){
+    private static List<String> getAllNames(String filename){
         try{
-            List<String> allNames = Files.readAllLines(Paths.get(Main.class.getClassLoader().getResource(txtFirstNames).toURI()));
-            int randomLine = random.nextInt(allNames.size());
-
-            return formatName(allNames.get(randomLine));
+            return Files.readAllLines(Paths.get(Main.class.getClassLoader().getResource(filename).toURI()));
         }catch (Exception ex){
-            throw new NameGenerationException("Cannot read from file: " + fileName);
+            throw new NameGenerationException("Cannot read from file: " + filename);
         }
+    }
+
+    private static String randomName(List<String> names){
+        int randomLine = random.nextInt(names.size());
+
+        return formatName(names.get(randomLine));
     }
 
     //ensures only first letter is upper case
     private static String formatName(String rawName){
-        rawName = rawName.toLowerCase();
+        rawName = rawName.toLowerCase().trim();
         rawName = rawName.substring(0, 1).toUpperCase() + rawName.substring(1).toLowerCase();
 
         return rawName;
