@@ -1,4 +1,4 @@
-package com.example.backend.fighters.enums;
+package internal.mma_league.fighters.enums;
 
 public enum Discipline {
     MIXED_MARTIAL_ARTIST,

@@ -1,7 +1,7 @@
-package com.example.backend.fighters.entity;
+package internal.mma_league.fighters.entity;
 
-import com.example.backend.fighters.enums.Discipline;
-import com.example.backend.fighters.enums.DisciplineLevel;
+import internal.mma_league.fighters.enums.Discipline;
+import internal.mma_league.fighters.enums.DisciplineLevel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;

@@ -1,6 +1,6 @@
-package com.example.backend.fighters.entity;
+package internal.mma_league.fighters.entity;
 
-import com.example.backend.fighters.enums.ChampionRank;
+import internal.mma_league.fighters.enums.ChampionRank;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

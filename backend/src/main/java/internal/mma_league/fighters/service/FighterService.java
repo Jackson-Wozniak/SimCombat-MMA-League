@@ -1,6 +1,6 @@
-package com.example.backend.fighters.service;
+package internal.mma_league.fighters.service;
 
-import com.example.backend.fighters.repository.FighterRepository;
+import internal.mma_league.fighters.repository.FighterRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

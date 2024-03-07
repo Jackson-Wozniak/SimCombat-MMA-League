@@ -1,6 +1,6 @@
-package com.example.backend.fighters.utils;
+package internal.mma_league.fighters.utils;
 
-import com.example.backend.fighters.exception.NameGenerationException;
+import internal.mma_league.fighters.exception.NameGenerationException;
 import com.sun.tools.javac.Main;
 
 import java.nio.file.Files;

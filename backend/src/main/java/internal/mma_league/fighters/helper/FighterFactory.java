@@ -1,11 +1,11 @@
-package com.example.backend.fighters.helper;
+package internal.mma_league.fighters.helper;
 
-import com.example.backend.fighters.entity.Fighter;
-import com.example.backend.fighters.entity.FighterAttributes;
-import com.example.backend.fighters.entity.FighterStats;
-import com.example.backend.fighters.exception.FighterGenerationException;
-import com.example.backend.fighters.service.FighterService;
-import com.example.backend.fighters.utils.NameGenerator;
+import internal.mma_league.fighters.entity.Fighter;
+import internal.mma_league.fighters.entity.FighterAttributes;
+import internal.mma_league.fighters.entity.FighterStats;
+import internal.mma_league.fighters.exception.FighterGenerationException;
+import internal.mma_league.fighters.service.FighterService;
+import internal.mma_league.fighters.utils.NameGenerator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

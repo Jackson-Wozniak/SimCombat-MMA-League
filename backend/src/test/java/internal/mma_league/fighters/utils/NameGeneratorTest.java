@@ -1,4 +1,4 @@
-package com.example.backend.fighters.utils;
+package internal.mma_league.fighters.utils;
 
 import org.junit.jupiter.api.Test;
 

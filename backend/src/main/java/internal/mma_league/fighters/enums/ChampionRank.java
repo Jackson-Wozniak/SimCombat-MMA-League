@@ -1,4 +1,4 @@
-package com.example.backend.fighters.enums;
+package internal.mma_league.fighters.enums;
 
 public enum ChampionRank {
     NON_RANKED,

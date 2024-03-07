@@ -1,4 +1,4 @@
-package com.example.backend.fighters.entity;
+package internal.mma_league.fighters.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -30,8 +30,7 @@ public class Fighter {
         this.stats = stats;
         this.attributes = attributes;
     }
-
-    //only important attribute in comparison is the name (ID)
+    
     @Override
     public boolean equals(Object obj){
         if(obj == null) return false;
