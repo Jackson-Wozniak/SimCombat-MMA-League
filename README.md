@@ -1,3 +1,40 @@
+<div align="center">
+  <kbd> <img src="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/assets/105665813/c322cf43-0511-45f6-b77f-b9689cce0eb6" width="700" height="318"/> </kbd>
+  
+  <h3 align="center">SimCombat MMA League</h3>
+
+  <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/edit/main/backend"><strong>Explore The Code»</strong></a>
+    </br>
+    <p>
+      <img src="https://img.shields.io/github/commit-activity/m/Jackson-Wozniak/SimCombat-MMA-League" alt="commits" />
+      <img src="https://img.shields.io/github/issues/Jackson-Wozniak/SimCombat-MMA-League" alt="issues" />
+      <img src="https://img.shields.io/github/license/Jackson-Wozniak/SimCombat-MMA-League" alt="license" />
+    </p> 
+    <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/blob/documentation">MMA League Overview</a>
+    ·
+    <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/issues">Request Feature</a>
+</div>
+
+## :books: Table of Contents
+
+<ol>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#tracking">MMA League Overview</a></li>
+    <li><a href="#tickets">Fighter Ranking Philosophy</a></li>
+    <li><a href="#banking">Matchmaking</a></li>
+    <li><a href="#technologies">Fight Results & Statistical Model</a></li>
+    <li><a href="#local-dev">Local Deployment</a></li>
+</ol>    
+
+<br/> 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
+
+
 MMA League Overview (subject to change, has not been implemented as of this writing)
 - 8 weight classes, each with 12 ranked fighters and up to a total of 20 non-ranked fighters
 - Events are held weekly. Events have 10 fights, with a main and co main event
