@@ -3,14 +3,14 @@
   
   <h3 align="center">SimCombat MMA League</h3>
 
-  <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/edit/main/backend"><strong>Explore The Code»</strong></a>
+  <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/blob/documentation"><strong>Simulations & Features»</strong></a>
     </br>
     <p>
       <img src="https://img.shields.io/github/commit-activity/m/Jackson-Wozniak/SimCombat-MMA-League" alt="commits" />
       <img src="https://img.shields.io/github/issues/Jackson-Wozniak/SimCombat-MMA-League" alt="issues" />
       <img src="https://img.shields.io/github/license/Jackson-Wozniak/SimCombat-MMA-League" alt="license" />
     </p> 
-    <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/blob/documentation">MMA League Overview</a>
+    <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/Contributions.MD">Contribute</a>
     ·
     <a href="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/issues">Report Bug</a>
     ·
@@ -21,19 +21,20 @@
 
 <ol>
     <li><a href="#features">Features</a></li>
-    <li><a href="#tracking">MMA League Overview</a></li>
-    <li><a href="#tickets">Fighter Ranking Philosophy</a></li>
-    <li><a href="#banking">Matchmaking</a></li>
-    <li><a href="#technologies">Fight Results & Statistical Model</a></li>
+    <li><a href="#league">MMA League Overview</a></li>
+    <li><a href="#statistics">Fight Results & Statistical Model</a></li>
     <li><a href="#local-dev">Local Deployment</a></li>
 </ol>    
 
 <br/> 
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
 
+## 📓 Features & Overview <a id="features"></a>
 
+<br/> 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-
+## :file_folder: SimCombat League Overview <a id="league"></a>
 
 MMA League Overview (subject to change, has not been implemented as of this writing)
 - 8 weight classes, each with 12 ranked fighters and up to a total of 20 non-ranked fighters
@@ -116,3 +117,16 @@ List<PastFight> fights - all fights from the event with the result & fighter nam
 - getPastEvent(name)
 - getPastEvent(date)
 - getPastEvents(startDate, endDate)
+
+<br/> 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+## :bar_chart: Fight Results & Statistical Model <a id="statistics"></a>
+
+<br/> 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+## :electric_plug: Local Deployment <a id="local-dev"></a>
+
+<br/> 
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
