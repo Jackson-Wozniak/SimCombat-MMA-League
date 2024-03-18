@@ -1,5 +1,5 @@
 <div align="center">
-  <kbd> <img src="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/assets/105665813/c322cf43-0511-45f6-b77f-b9689cce0eb6" width="700" height="318"/> </kbd>
+  <kbd> <img src="https://github.com/Jackson-Wozniak/SimCombat-MMA-League/assets/105665813/c322cf43-0511-45f6-b77f-b9689cce0eb6" width="665" height="389"/> </kbd>
   
   <h3 align="center">SimCombat MMA League</h3>
 
