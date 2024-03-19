@@ -5,5 +5,6 @@ public enum DisciplineLevel {
     EXPERT,
     EXPERIENCED,
     AVERAGE,
+    INTERMEDIATE,
     BEGINNER
 }

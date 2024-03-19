@@ -15,6 +15,14 @@ public class FighterFactory {
     public Fighter generate(int weight){
        String name = FighterFactoryUtils.createValidName(fighterService);
 
-       return null;
+       return new Fighter.Builder(name, weight)
+               .height(FighterFactoryUtils.randomHeightInches(weight))
+               .birthday(FighterFactoryUtils.randomBirthday())
+               .discipline(
+                       FighterFactoryUtils.randomDiscipline(),
+                       FighterFactoryUtils.randomDisciplineLevel()
+               )
+               .grade(FighterFactoryUtils.randomGrade())
+               .build();
     }
 }
