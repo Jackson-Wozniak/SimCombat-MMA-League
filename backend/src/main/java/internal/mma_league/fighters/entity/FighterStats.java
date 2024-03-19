@@ -1,33 +1,40 @@
 package internal.mma_league.fighters.entity;
 
 import internal.mma_league.fighters.enums.ChampionRank;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Embeddable
 @Getter
 @Setter
-@NoArgsConstructor
 public class FighterStats {
 
-    private Integer wins;
-    private Integer losses;
-    private Integer noContests;
-    private Integer finishes;
+    @Column(name = "elo_rating")
     private Integer elo;
+
+    @Embedded
+    private FighterRecord record;
+
     @Enumerated(EnumType.STRING)
     private ChampionRank championRank;
 
-    public FighterStats(int elo, ChampionRank rank){
-        this.wins = 0;
-        this.losses = 0;
-        this.noContests = 0;
-        this.finishes = 0;
-        this.elo = elo;
-        this.championRank = rank;
+    @Column(name = "legacy_score")
+    private Integer legacyScore;
+
+    @Column(name = "fans")
+    private Integer fans;
+
+    @Column(name = "longevity")
+    private Integer longevity;
+
+    public FighterStats(){
+        this.elo = 1000;
+        this.record = new FighterRecord();
+        this.championRank = ChampionRank.NON_RANKED;
+        this.legacyScore = 0;
+        this.fans = 0;
+        this.longevity = 100;
     }
+
 }
