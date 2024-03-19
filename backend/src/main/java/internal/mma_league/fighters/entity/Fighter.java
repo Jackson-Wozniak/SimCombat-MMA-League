@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 
 @Entity(name = "fighter")
 @Table(name = "fighter")
@@ -56,6 +57,44 @@ public class Fighter {
 
         return this.name.equals(copy.name);
     }
+
+    public static Comparator<Fighter> myClassComparator = new Comparator<Fighter>() {
+        @Override
+        public int compare(Fighter f1, Fighter f2) {
+            // First sort by attr1
+            int compareAttr1 = Integer.compare(f1.getStats().getElo(), f2.getStats().getElo());
+            if (compareAttr1 != 0) {
+                return compareAttr1;
+            }
+
+            // If elo is the same, sort by wins
+            int compareAttr2 = Integer.compare(
+                    f1.getStats().getRecord().getWins(),
+                    f2.getStats().getRecord().getWins());
+            if (compareAttr2 != 0) {
+                return compareAttr2;
+            }
+
+            // If wins is the same, sort by losses
+            int compareAttr3 = Integer.compare(
+                    f1.getStats().getRecord().getLosses(),
+                    f2.getStats().getRecord().getLosses());
+            if (compareAttr3 != 0) {
+                return compareAttr3;
+            }
+
+            // If losses is the same, sort by grade
+            int compareAttr4 = Integer.compare(
+                    f1.getAttributes().getGrade(),
+                    f2.getAttributes().getGrade());
+            if (compareAttr4 != 0) {
+                return compareAttr4;
+            }
+
+            //return 1st fighter if all are the same
+            return 1;
+        }
+    };
 
     public static class Builder{
 

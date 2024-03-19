@@ -35,4 +35,41 @@ public class FighterTest {
         assertEquals(0, test.getStats().getRecord().getWins());
         assertEquals(0, test.getStats().getRecord().getLosses());
     }
+
+    @Test
+    void compareAllFourAttributes(){
+        Fighter f1 = new Fighter.Builder("F1", 155)
+                .height(66)
+                .birthday(LocalDate.of(1, 1, 1))
+                .discipline(Discipline.MIXED_MARTIAL_ARTIST, DisciplineLevel.BEGINNER)
+                .grade(99)
+                .build();
+
+        Fighter f2 = new Fighter.Builder("F2", 155)
+                .height(66)
+                .birthday(LocalDate.of(1, 1, 1))
+                .discipline(Discipline.MIXED_MARTIAL_ARTIST, DisciplineLevel.BEGINNER)
+                .grade(99)
+                .build();
+
+        assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
+
+        f2.getStats().setElo(1001);
+        assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
+
+        f2.getStats().setElo(1000);
+        assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
+        f2.getStats().getRecord().setWins(1);
+        assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
+
+        f2.getStats().getRecord().setWins(0);
+        assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
+        f2.getStats().getRecord().setLosses(1);
+        assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
+
+        f2.getStats().getRecord().setLosses(0);
+        assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
+        f2.getAttributes().setGrade(100);
+        assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
+    }
 }

@@ -32,4 +32,8 @@ public class FighterRecord {
         this.submissions = 0;
         this.timesFinished = 0;
     }
+
+    public int totalFights(){
+        return this.wins + this.losses;
+    }
 }
