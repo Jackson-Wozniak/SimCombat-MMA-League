@@ -27,7 +27,7 @@ public class OutcomeProbability {
     }
 
     private void calculateNoFinishChances(){
-        this.noFinishChance = 1.0 - knockoutChancePerRound - submissionChancePerRound;
+        this.noFinishChance = format(1.0 - knockoutChancePerRound - submissionChancePerRound);
     }
 
     private double format(double d){
