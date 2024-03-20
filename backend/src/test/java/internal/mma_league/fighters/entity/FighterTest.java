@@ -14,17 +14,16 @@ public class FighterTest {
         Fighter test = new Fighter.Builder("TEST", 155)
                 .height(66)
                 .birthday(LocalDate.of(1, 1, 1))
-                .discipline(Discipline.MIXED_MARTIAL_ARTIST, DisciplineLevel.BEGINNER)
-                .grade(99)
+                .striking(100, 100)
+                .grappling(99, 99)
                 .build();
 
         assertEquals("TEST", test.getName());
         assertEquals(155, test.getWeightClass());
         assertEquals(LocalDate.of(1, 1, 1), test.getBirthday());
         assertEquals(66, test.getHeightInInches());
-        assertEquals(Discipline.MIXED_MARTIAL_ARTIST, test.getAttributes().getDiscipline());
-        assertEquals(DisciplineLevel.BEGINNER, test.getAttributes().getDisciplineLevel());
-        assertEquals(99, test.getAttributes().getGrade());
+        assertEquals(100, test.getAttributes().getStrikingAbility());
+        assertEquals(99, test.getAttributes().getGrapplingAbility());
         assertEquals(ChampionRank.NON_RANKED, test.getStats().getChampionRank());
         assertEquals(1000, test.getStats().getElo());
         assertEquals(0, test.getStats().getFans());
@@ -39,15 +38,15 @@ public class FighterTest {
         Fighter f1 = new Fighter.Builder("F1", 155)
                 .height(66)
                 .birthday(LocalDate.of(1, 1, 1))
-                .discipline(Discipline.MIXED_MARTIAL_ARTIST, DisciplineLevel.BEGINNER)
-                .grade(99)
+                .striking(100, 100)
+                .grappling(100, 100)
                 .build();
 
         Fighter f2 = new Fighter.Builder("F2", 155)
                 .height(66)
                 .birthday(LocalDate.of(1, 1, 1))
-                .discipline(Discipline.MIXED_MARTIAL_ARTIST, DisciplineLevel.BEGINNER)
-                .grade(99)
+                .striking(100, 100)
+                .grappling(100, 100)
                 .build();
 
         assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
@@ -67,7 +66,7 @@ public class FighterTest {
 
         f2.getStats().getRecord().setLosses(0);
         assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
-        f2.getAttributes().setGrade(100);
+        f1.getAttributes().setGrapplingAbility(50);
         assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
     }
 }
