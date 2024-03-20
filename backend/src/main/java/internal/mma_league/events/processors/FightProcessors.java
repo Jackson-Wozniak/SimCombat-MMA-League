@@ -6,9 +6,8 @@ import internal.mma_league.events.enums.MatchupPriority;
 import internal.mma_league.events.enums.Outcome;
 import internal.mma_league.events.objects.FighterProbabilities;
 import internal.mma_league.events.objects.InProgressFight;
-import internal.mma_league.events.objects.OutcomeProbability;
 import internal.mma_league.events.objects.ProbabilityNumberLine;
-import internal.mma_league.events.properties.BaseProbabilities;
+import internal.mma_league.events.utils.FightProbabilityUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -23,14 +22,12 @@ public class FightProcessors {
     public FightResult startFight(Matchup matchup){
         int rounds = MatchupPriority.numberOfRounds(matchup.getPriority());
 
-        OutcomeProbability outcomeProbability = BaseProbabilities.byWeightClass(matchup.getWeightClass());
-        FighterProbabilities probabilities = new FighterProbabilities(
-                outcomeProbability, matchup.getFighter1(), matchup.getFighter2());
+        FighterProbabilities probabilities = FightProbabilityUtils.generateFighterProbabilities(
+                        matchup.getWeightClass(), matchup.getFighter1(), matchup.getFighter2());
         InProgressFight fight = new InProgressFight(new ProbabilityNumberLine(probabilities));
 
         for(int i = 1; i <= rounds; i++){
             Outcome roundOutcome = fight.simulateRound(random.nextInt(100) + 1);
-
 
             if(roundOutcome.equals(Outcome.KNOCKOUT)){
                 if(fight.isFighter1Wins()){
