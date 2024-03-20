@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.text.DecimalFormat;
 
+import static internal.mma_league.events.utils.Formatting.twoDecimalRound;
+
 @Getter
 @Setter
 public class FighterProbabilities {
@@ -35,17 +37,13 @@ public class FighterProbabilities {
         double KOChance = outcomeProbability.getKnockoutChancePerRound() +
                 (outcomeProbability.getKnockoutChancePerRound() * (strikingDifference / 100.0));
         double weightedKOChance = KOChance * winProb;
-        setFighter1KOChance(format(weightedKOChance));
+        setFighter1KOChance(twoDecimalRound(weightedKOChance));
 
         double subChance = outcomeProbability.getSubmissionChancePerRound() +
                 (outcomeProbability.getSubmissionChancePerRound() * (grapplingDifference / 100.0));
         double weightedSubChance = subChance * winProb;
-        setFighter1KOChance(format(weightedKOChance));
+        setFighter1KOChance(twoDecimalRound(weightedKOChance));
 
-        setFighter1NoFinishChance(format(winProb - weightedKOChance - weightedSubChance));
-    }
-
-    private double format(double d){
-        return Double.parseDouble(formatter.format(d));
+        setFighter1NoFinishChance(twoDecimalRound(winProb - weightedKOChance - weightedSubChance));
     }
 }

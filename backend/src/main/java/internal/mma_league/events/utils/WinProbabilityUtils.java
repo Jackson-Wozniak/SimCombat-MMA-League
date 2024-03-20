@@ -3,11 +3,7 @@ package internal.mma_league.events.utils;
 import internal.mma_league.events.properties.BaseProbabilities;
 import internal.mma_league.fighters.entity.Fighter;
 
-import java.text.DecimalFormat;
-
 public class WinProbabilityUtils {
-
-    private static final DecimalFormat formatter = new DecimalFormat("0.##");
 
     public static double fighter1WinProbability(Fighter fighter1, Fighter fighter2){
         int fighter1Offense = fighter1.getAttributes().getGrapplingAbility()
@@ -26,10 +22,6 @@ public class WinProbabilityUtils {
 
         double totalWeightedGrade = fighter1WeightedGrade + fighter2WeightedGrade;
 
-        return format(fighter1WeightedGrade / totalWeightedGrade);
-    }
-
-    private static double format(double d){
-        return Double.parseDouble(formatter.format(d));
+        return Formatting.twoDecimalRound(fighter1WeightedGrade / totalWeightedGrade);
     }
 }

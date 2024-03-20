@@ -1,12 +1,12 @@
 package internal.mma_league.events.objects;
 
 import internal.mma_league.events.exceptions.ProbabilityException;
-import internal.mma_league.fighters.enums.WeightClass;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.text.DecimalFormat;
+
+import static internal.mma_league.events.utils.Formatting.twoDecimalRound;
 
 @Getter
 @Setter
@@ -18,8 +18,8 @@ public class OutcomeProbability {
     private static final DecimalFormat formatter = new DecimalFormat("0.##");
 
     public OutcomeProbability(double knockoutChance, double submissionChance){
-        this.knockoutChancePerRound = format(knockoutChance / 3.0); //because 3 rounds
-        this.submissionChancePerRound = format(submissionChance / 3.0);
+        this.knockoutChancePerRound = twoDecimalRound(knockoutChance / 3.0); //because 3 rounds
+        this.submissionChancePerRound = twoDecimalRound(submissionChance / 3.0);
         if(this.knockoutChancePerRound + this.submissionChancePerRound > 1.0){
             throw new ProbabilityException("Sum of probabilities must be 1.0");
         }
@@ -27,10 +27,6 @@ public class OutcomeProbability {
     }
 
     private void calculateNoFinishChances(){
-        this.noFinishChance = format(1.0 - knockoutChancePerRound - submissionChancePerRound);
-    }
-
-    private double format(double d){
-        return Double.parseDouble(formatter.format(d));
+        this.noFinishChance = twoDecimalRound(1.0 - knockoutChancePerRound - submissionChancePerRound);
     }
 }
