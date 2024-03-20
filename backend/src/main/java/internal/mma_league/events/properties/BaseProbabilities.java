@@ -37,4 +37,8 @@ public class BaseProbabilities {
             case HEAVYWEIGHT -> heavyweightProbabilities;
         };
     }
+
+    public static OutcomeProbability byWeightClass(int weight){
+        return byWeightClass(WeightClass.convertFromPounds(weight));
+    }
 }

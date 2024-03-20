@@ -5,8 +5,6 @@ import internal.mma_league.fighters.entity.Fighter;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.text.DecimalFormat;
-
 import static internal.mma_league.events.utils.Formatting.twoDecimalRound;
 
 @Getter
@@ -19,7 +17,6 @@ public class FighterProbabilities {
     private double fighter2SubChance;
     private double fighter1NoFinishChance;
     private double fighter2NoFinishChance;
-    private static final DecimalFormat formatter = new DecimalFormat("0.##");
 
     public FighterProbabilities(OutcomeProbability outcomeProbability, Fighter fighter1, Fighter fighter2){
         setFighterChances(fighter1, fighter2, outcomeProbability);
