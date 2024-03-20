@@ -18,11 +18,14 @@ public class FighterFactory {
        return new Fighter.Builder(name, weight)
                .height(FighterFactoryUtils.randomHeightInches(weight))
                .birthday(FighterFactoryUtils.randomBirthday())
-               .discipline(
-                       FighterFactoryUtils.randomDiscipline(),
-                       FighterFactoryUtils.randomDisciplineLevel()
+               .striking(
+                       FighterFactoryUtils.randomGrade(),
+                       FighterFactoryUtils.randomGrade()
                )
-               .grade(FighterFactoryUtils.randomGrade())
+               .grappling(
+                       FighterFactoryUtils.randomGrade(),
+                       FighterFactoryUtils.randomGrade()
+               )
                .build();
     }
 }

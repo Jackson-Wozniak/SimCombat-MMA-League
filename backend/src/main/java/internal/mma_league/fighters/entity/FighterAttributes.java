@@ -1,11 +1,7 @@
 package internal.mma_league.fighters.entity;
 
-import internal.mma_league.fighters.enums.Discipline;
-import internal.mma_league.fighters.enums.DisciplineLevel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,18 +10,34 @@ import lombok.Setter;
 @Setter
 public class FighterAttributes {
 
-    @Enumerated(value = EnumType.STRING)
-    private Discipline discipline;
+    @Column(name = "striking_ability")
+    private Integer strikingAbility;
 
-    @Enumerated(value = EnumType.STRING)
-    private DisciplineLevel disciplineLevel;
+    @Column(name = "striking_defense")
+    private Integer strikingDefense;
 
-    @Column(name = "grade")
-    private Integer grade;
+    @Column(name = "grappling_ability")
+    private Integer grapplingAbility;
 
-    public FighterAttributes(Discipline discipline, DisciplineLevel disciplineLevel, int grade){
-        this.discipline = discipline;
-        this.disciplineLevel = disciplineLevel;
-        this.grade = grade;
+    @Column(name = "grappling_defense")
+    private Integer grapplingDefense;
+
+    public FighterAttributes(){
+        this.strikingAbility = 0;
+        this.strikingDefense = 0;
+        this.grapplingAbility = 0;
+        this.grapplingDefense = 0;
+    }
+
+    public FighterAttributes(int strikingAbility, int strikingDefense,
+                             int grapplingAbility, int grapplingDefense){
+        this.strikingAbility = strikingAbility;
+        this.strikingDefense = strikingDefense;
+        this.grapplingAbility = grapplingAbility;
+        this.grapplingDefense = grapplingDefense;
+    }
+
+    public int sumOfAttributes(){
+        return this.strikingAbility + strikingDefense + grapplingAbility + grapplingDefense;
     }
 }

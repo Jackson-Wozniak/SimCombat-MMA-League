@@ -68,6 +68,11 @@ These variables & win chance are decided by the FighterAbility class
 Base KO, SUB rates +/- ability weight for each fighter
 Win chance is 50/50 base, and then weighted depending on the total ability of fighter
 
+Win chance calculation:
+- fighter weight grade = ((strikingAbility + grapplingAbility) * .6) + ((strikingDefense + grapplingDefense) * .4)
+- total weighted grade = fighter1 weight grade + fighter2 weight grade
+- fighter1 win prob = fighter1 weight grade / total weighted grade
+
 <br/> 
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
 

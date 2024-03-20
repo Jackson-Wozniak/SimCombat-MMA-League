@@ -1,7 +1,5 @@
 package internal.mma_league.fighters.utils;
 
-import internal.mma_league.fighters.enums.Discipline;
-import internal.mma_league.fighters.enums.DisciplineLevel;
 import internal.mma_league.fighters.enums.WeightClass;
 import internal.mma_league.fighters.exception.FighterGenerationException;
 import internal.mma_league.fighters.service.FighterService;
@@ -25,44 +23,6 @@ public class FighterFactoryUtils {
         int yearsOld = random.nextInt(9) + 20;
 
         return LocalDate.now().minusYears(yearsOld).plusDays(random.nextInt(365));
-    }
-
-    //40% chance of MMA discipline, 20% of all others
-    public static Discipline randomDiscipline(){
-        int number = random.nextInt(100) + 1;
-
-        if(number <= 40){
-            return Discipline.MIXED_MARTIAL_ARTIST;
-        }
-        if(number <= 60){
-            return Discipline.KICKBOXER;
-        }
-        if(number <= 80){
-            return Discipline.JIU_JITSU;
-        }
-        return Discipline.WRESTLER;
-    }
-
-    //bell curve with weight toward average
-    public static DisciplineLevel randomDisciplineLevel(){
-        int number = random.nextInt(100) + 1;
-
-        if(number <= 10){
-            return DisciplineLevel.BEGINNER;
-        }
-        if(number <= 30){
-            return DisciplineLevel.INTERMEDIATE;
-        }
-        if(number <= 60){
-            return DisciplineLevel.AVERAGE;
-        }
-        if(number <= 80){
-            return DisciplineLevel.EXPERIENCED;
-        }
-        if(number <= 95){
-            return DisciplineLevel.EXPERT;
-        }
-        return DisciplineLevel.MASTER;
     }
 
     //bell curve with weight toward average

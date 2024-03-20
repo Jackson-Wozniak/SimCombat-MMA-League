@@ -1,8 +1,6 @@
 package internal.mma_league.fighters.entity;
 
 import internal.mma_league.fighters.enums.ChampionRank;
-import internal.mma_league.fighters.enums.Discipline;
-import internal.mma_league.fighters.enums.DisciplineLevel;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

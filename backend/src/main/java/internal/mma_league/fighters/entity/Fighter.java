@@ -1,7 +1,5 @@
 package internal.mma_league.fighters.entity;
 
-import internal.mma_league.fighters.enums.Discipline;
-import internal.mma_league.fighters.enums.DisciplineLevel;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +27,9 @@ public class Fighter {
     @Column(name = "birthday")
     private LocalDate birthday;
 
+    @Column(name = "scheduled_fight")
+    private Boolean hasScheduledFlight;
+
     @Embedded
     private FighterStats stats;
 
@@ -42,7 +43,9 @@ public class Fighter {
         this.birthday = builder.birthday;
         this.stats = new FighterStats();
         this.attributes = new FighterAttributes(
-                builder.discipline, builder.disciplineLevel, builder.grade);
+                builder.strikingAbility, builder.strikingDefense,
+                builder.grapplingAbility, builder.grapplingDefense);
+        this.hasScheduledFlight = false;
     }
     
     @Override
@@ -83,10 +86,10 @@ public class Fighter {
                 return compareAttr3;
             }
 
-            // If losses is the same, sort by grade
+            // If losses is the same, sort by total ability
             int compareAttr4 = Integer.compare(
-                    f1.getAttributes().getGrade(),
-                    f2.getAttributes().getGrade());
+                    f1.getAttributes().sumOfAttributes(),
+                    f2.getAttributes().sumOfAttributes());
             if (compareAttr4 != 0) {
                 return compareAttr4;
             }
@@ -102,9 +105,10 @@ public class Fighter {
         private final int weightClass;
         private int height;
         private LocalDate birthday;
-        private Discipline discipline;
-        private DisciplineLevel disciplineLevel;
-        private int grade;
+        private int strikingAbility;
+        private int strikingDefense;
+        private int grapplingAbility;
+        private int grapplingDefense;
 
         public Builder(String name, int weightClass){
             this.name = name;
@@ -121,14 +125,15 @@ public class Fighter {
             return this;
         }
 
-        public Builder discipline(Discipline discipline, DisciplineLevel disciplineLevel){
-            this.discipline = discipline;
-            this.disciplineLevel = disciplineLevel;
+        public Builder striking(int strikingAbility, int strikingDefense){
+            this.strikingAbility = strikingAbility;
+            this.strikingDefense = strikingDefense;
             return this;
         }
 
-        public Builder grade(int grade){
-            this.grade = grade;
+        public Builder grappling(int grapplingAbility, int grapplingDefense){
+            this.grapplingAbility = grapplingAbility;
+            this.grapplingDefense = grapplingDefense;
             return this;
         }
 
