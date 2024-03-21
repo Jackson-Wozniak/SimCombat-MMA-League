@@ -39,5 +39,7 @@ public class EventService {
         return events;
     }
 
-    //TODO: public boolean deleteEventAndCreateEventResult(Event event)
+    //TODO: public boolean deleteEvent(Event event)
+
+    //TODO: public boolean deleteEventAndCreateEventResult(Event event, EventResult eventResult)
 }
