@@ -19,28 +19,40 @@ public class FighterProbabilities {
     private double fighter2NoFinishChance;
 
     public FighterProbabilities(OutcomeProbability outcomeProbability, Fighter fighter1, Fighter fighter2){
-        setFighterChances(fighter1, fighter2, outcomeProbability);
-        setFighterChances(fighter2, fighter1, outcomeProbability);
+        double winProb1 = WinProbabilityUtils.fighter1WinProbability(fighter1, fighter2);
+        double winProb2 = 1 - winProb1;
+
+        this.fighter1KOChance = KOChance(winProb1, fighter1, fighter2, outcomeProbability);
+        setFighter2KOChance(KOChance(winProb2, fighter2, fighter1, outcomeProbability));
+
+        setFighter1SubChance(subChance(winProb1, fighter1, fighter2, outcomeProbability));
+        setFighter2SubChance(subChance(winProb2, fighter2, fighter1, outcomeProbability));
+
+        setFighter1NoFinishChance(noFinishChance(winProb1, fighter1KOChance, fighter1SubChance));
+        setFighter2NoFinishChance(noFinishChance(winProb2, fighter2KOChance, fighter2SubChance));
     }
 
-    public void setFighterChances(Fighter fighter1, Fighter fighter2, OutcomeProbability outcomeProbability){
-        double winProb = WinProbabilityUtils.fighter1WinProbability(fighter1, fighter2);
 
-        int strikingDifference = (fighter1.getAttributes().getStrikingAbility() - 50) +
-                (fighter2.getAttributes().getStrikingDefense() - 50);
-        int grapplingDifference = (fighter1.getAttributes().getGrapplingAbility() - 50) +
-                (fighter2.getAttributes().getGrapplingDefense() - 50);
+    private double KOChance(double winProb, Fighter f1, Fighter f2, OutcomeProbability outcomeProbability){
+        int strikingDifference = (f1.getAttributes().getStrikingAbility() - 50) -
+                (f2.getAttributes().getStrikingDefense() - 50);
 
         double KOChance = outcomeProbability.getKnockoutChancePerRound() +
                 (outcomeProbability.getKnockoutChancePerRound() * (strikingDifference / 100.0));
-        double weightedKOChance = KOChance * winProb;
-        setFighter1KOChance(twoDecimalRound(weightedKOChance));
+
+        return twoDecimalRound(KOChance * winProb);
+    }
+
+    private double subChance(double winProb, Fighter f1, Fighter f2, OutcomeProbability outcomeProbability){
+        int grapplingDifference = (f1.getAttributes().getGrapplingAbility() - 50) -
+                (f2.getAttributes().getGrapplingDefense() - 50);
 
         double subChance = outcomeProbability.getSubmissionChancePerRound() +
                 (outcomeProbability.getSubmissionChancePerRound() * (grapplingDifference / 100.0));
-        double weightedSubChance = subChance * winProb;
-        setFighter1KOChance(twoDecimalRound(weightedKOChance));
+        return twoDecimalRound(subChance * winProb);
+    }
 
-        setFighter1NoFinishChance(twoDecimalRound(winProb - weightedKOChance - weightedSubChance));
+    private double noFinishChance(double winProb, double KOChance, double subChance){
+        return twoDecimalRound(winProb - KOChance - subChance);
     }
 }

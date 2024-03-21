@@ -19,7 +19,7 @@ public class FightProcessors {
 
     private static final Random random = new Random();
 
-    public FightResult startFight(Matchup matchup){
+    public FightResult simulateFight(Matchup matchup){
         int rounds = MatchupPriority.numberOfRounds(matchup.getPriority());
 
         FighterProbabilities probabilities = FightProbabilityUtils.generateFighterProbabilities(
