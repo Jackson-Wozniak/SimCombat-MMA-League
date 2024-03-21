@@ -78,5 +78,19 @@ Win chance calculation:
 
 ## :electric_plug: Local Deployment <a id="local-dev"></a>
 
+To run locally, follow these commands
+
+```
+- git clone https://github.com/Jackson-Wozniak/SimCombat-MMA-League.git
+- cd (to the location of cloned repo)
+- docker-compose up
+
+to shut down the application, run:
+- docker-compose down
+
+to restart the app after making local changes (to rebuild the jar file), run:
+-docker-compose up --build
+```
+
 <br/> 
 <!-- -------------------------------------------------------------------------------------------------------------------------------------------- -->
