@@ -9,17 +9,15 @@ import internal.mma_league.events.objects.InProgressFight;
 import internal.mma_league.events.objects.ProbabilityNumberLine;
 import internal.mma_league.events.utils.FightProbabilityUtils;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
-@Component
 @AllArgsConstructor
-public class FightProcessors {
+public class FightProcessor {
 
     private static final Random random = new Random();
 
-    public FightResult simulateFight(Matchup matchup){
+    public static FightResult simulateFight(Matchup matchup){
         int rounds = MatchupPriority.numberOfRounds(matchup.getPriority());
 
         FighterProbabilities probabilities = FightProbabilityUtils.generateFighterProbabilities(
