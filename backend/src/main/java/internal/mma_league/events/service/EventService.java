@@ -7,7 +7,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -36,6 +38,16 @@ public class EventService {
                 .filter(event -> event.getDate().isBefore(end) && event.getDate().isAfter(start))
                 .toList();
         if(events.isEmpty()) throw new EventNotFoundException("No events in this range");
+        return events;
+    }
+
+    public Map<String, LocalDate> findEventInfo(){
+        Map<String, LocalDate> events = new HashMap<>();
+
+        eventRepository.findAll().forEach(event -> {
+            events.put(event.getName(), event.getDate());
+        });
+
         return events;
     }
 

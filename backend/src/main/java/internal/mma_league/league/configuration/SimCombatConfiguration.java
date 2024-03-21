@@ -2,6 +2,7 @@ package internal.mma_league.league.configuration;
 
 import internal.mma_league.league.entity.SimCombat;
 import internal.mma_league.league.repository.SimCombatRepository;
+import internal.mma_league.league.utils.DateFormat;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +26,7 @@ public class SimCombatConfiguration {
             return simCombatRepository.save(simCombat);
         });
 
-        logger.info("SimCombat League started. Current date: " + object.getDate());
+        logger.info("SimCombat League started. Current date: " + DateFormat.toWords(object.getDate()));
         return object;
     }
 }
