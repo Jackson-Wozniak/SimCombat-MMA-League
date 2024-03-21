@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,12 @@ public class EventService {
                 .toList();
         if(events.isEmpty()) throw new EventNotFoundException("No events in this range");
         return events;
+    }
+
+    public Event findNextEvent(){
+        return eventRepository.findAll().stream()
+                .min(Comparator.comparing(Event::getDate))
+                .orElse(null);
     }
 
     public Map<String, LocalDate> findEventInfo(){

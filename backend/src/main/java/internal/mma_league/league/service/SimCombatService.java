@@ -14,8 +14,8 @@ public class SimCombatService {
     private final SimCombat simCombat;
     private final SimCombatRepository simCombatRepository;
 
-    public void incrementDate(){
+    public LocalDate incrementDate(){
         simCombat.incrementDate();
-        simCombatRepository.save(simCombat);
+        return simCombatRepository.save(simCombat).getDate();
     }
 }
