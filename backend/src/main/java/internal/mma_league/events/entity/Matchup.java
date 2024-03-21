@@ -26,7 +26,7 @@ public class Matchup {
     private Fighter fighter1;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "fighter_1")
+    @JoinColumn(name = "fighter_2")
     private Fighter fighter2;
 
     @Enumerated(EnumType.STRING)
