@@ -1,7 +1,7 @@
 package internal.mma_league.events.properties;
 
 import internal.mma_league.events.objects.OutcomeProbability;
-import internal.mma_league.fighters.enums.WeightClass;
+import internal.mma_league.league.enums.WeightClassNames;
 
 public class BaseProbabilities {
 
@@ -25,8 +25,8 @@ public class BaseProbabilities {
     private static final OutcomeProbability heavyweightProbabilities =
             new OutcomeProbability(.49, .22);
 
-    public static OutcomeProbability byWeightClass(WeightClass weightClass){
-        return switch (weightClass){
+    public static OutcomeProbability byWeightClass(WeightClassNames weightClassNames){
+        return switch (weightClassNames){
             case FLYWEIGHT -> flyweightProbabilities;
             case BANTAMWEIGHT -> bantamweightProbabilities;
             case FEATHERWEIGHT -> featherweightProbabilities;
@@ -39,6 +39,6 @@ public class BaseProbabilities {
     }
 
     public static OutcomeProbability byWeightClass(int weight){
-        return byWeightClass(WeightClass.convertFromPounds(weight));
+        return byWeightClass(WeightClassNames.convertFromPounds(weight));
     }
 }

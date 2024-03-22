@@ -1,8 +1,10 @@
-package internal.mma_league.fighters.enums;
+package internal.mma_league.league.enums;
 
 import internal.mma_league.fighters.exception.InvalidWeightClassException;
 
-public enum WeightClass {
+import java.util.Set;
+
+public enum WeightClassNames {
 
     FLYWEIGHT, //125
     BANTAMWEIGHT, //135
@@ -13,7 +15,20 @@ public enum WeightClass {
     LIGHT_HEAVYWEIGHT, //205
     HEAVYWEIGHT; //up to 265
 
-    public static WeightClass convertFromPounds(int weight){
+    public static Set<WeightClassNames> getAllNames(){
+        return Set.of(
+                FLYWEIGHT,
+                BANTAMWEIGHT,
+                FEATHERWEIGHT,
+                LIGHTWEIGHT,
+                WELTERWEIGHT,
+                MIDDLEWEIGHT,
+                LIGHT_HEAVYWEIGHT,
+                HEAVYWEIGHT
+        );
+    }
+
+    public static WeightClassNames convertFromPounds(int weight){
         return switch (weight){
             case 125 -> FLYWEIGHT;
             case 135 -> BANTAMWEIGHT;
@@ -27,8 +42,8 @@ public enum WeightClass {
         };
     }
 
-    public static int convertToPounds(WeightClass weightClass){
-        return switch (weightClass){
+    public static int convertToPounds(WeightClassNames weightClassNames){
+        return switch (weightClassNames){
             case FLYWEIGHT -> 125;
             case BANTAMWEIGHT -> 135;
             case FEATHERWEIGHT -> 145;
@@ -40,8 +55,8 @@ public enum WeightClass {
         };
     }
 
-    public static int baseHeight(WeightClass weightClass){
-        return switch (weightClass){
+    public static int baseHeight(WeightClassNames weightClassNames){
+        return switch (weightClassNames){
             case FLYWEIGHT -> 63;
             case BANTAMWEIGHT -> 64;
             case FEATHERWEIGHT -> 65;

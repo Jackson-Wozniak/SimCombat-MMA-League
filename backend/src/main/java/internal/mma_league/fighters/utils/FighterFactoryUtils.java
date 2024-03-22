@@ -1,6 +1,6 @@
 package internal.mma_league.fighters.utils;
 
-import internal.mma_league.fighters.enums.WeightClass;
+import internal.mma_league.league.enums.WeightClassNames;
 import internal.mma_league.fighters.exception.FighterGenerationException;
 import internal.mma_league.fighters.service.FighterService;
 
@@ -16,7 +16,7 @@ public class FighterFactoryUtils {
     public static int randomHeightInches(int weight){
         int number = random.nextInt(7);
 
-        return WeightClass.baseHeight(WeightClass.convertFromPounds(weight)) + number;
+        return WeightClassNames.baseHeight(WeightClassNames.convertFromPounds(weight)) + number;
     }
 
     public static LocalDate randomBirthday(){
