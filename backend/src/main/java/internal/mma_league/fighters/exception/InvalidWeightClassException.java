@@ -8,4 +8,8 @@ public class InvalidWeightClassException extends RuntimeException{
     public InvalidWeightClassException(int weight){
         super("No weight class at " + weight + " pounds");
     }
+
+    public InvalidWeightClassException(String weight){
+        super("Weight must be integer");
+    }
 }

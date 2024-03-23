@@ -29,7 +29,7 @@ public class SimCombatScheduler {
     private final EventService eventService;
     private static final Logger logger = LoggerFactory.getLogger(SimCombatScheduler.class);
 
-    @Scheduled(fixedRate = SchedulingIntervals.ONE_SECOND)
+    @Scheduled(fixedRate = SchedulingIntervals.ONE_HOUR)
     public void dailyLeagueProcess(){
         LocalDate currentDate = simCombat.getDate();
 

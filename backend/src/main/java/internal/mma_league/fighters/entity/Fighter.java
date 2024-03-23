@@ -99,6 +99,10 @@ public class Fighter {
         }
     };
 
+    public String getFormattedRecord(){
+        return stats.getRecord().getWins() + "-" + stats.getRecord().getLosses();
+    }
+
     public static class Builder{
 
         private final String name;

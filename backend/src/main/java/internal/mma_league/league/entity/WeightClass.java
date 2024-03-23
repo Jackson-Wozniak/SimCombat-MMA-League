@@ -20,7 +20,7 @@ public class WeightClass {
     @Id
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Fighter> fighters = new HashSet<>();
 
     public WeightClass(String name){
