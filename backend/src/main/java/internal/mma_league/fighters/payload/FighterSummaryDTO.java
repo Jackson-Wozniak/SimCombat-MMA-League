@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -20,8 +21,8 @@ public class FighterSummaryDTO {
 
     public FighterSummaryDTO(Fighter fighter, int ranking){
         this.name = fighter.getName();
-        this.ranking = ranking;
         this.record = fighter.getFormattedRecord();
+        this.ranking = (ranking < 13 ? ranking : -1); //only rank top 12
     }
 
     public static Set<FighterSummaryDTO> map(Set<Fighter> fighters){
@@ -29,6 +30,7 @@ public class FighterSummaryDTO {
 
         return IntStream.range(0, sortedFighters.size())
                 .mapToObj(i -> new FighterSummaryDTO(sortedFighters.get(i), i + 1))
-                .collect(Collectors.toSet());
+                .sorted(Comparator.comparingInt(FighterSummaryDTO::getRanking))
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 }
