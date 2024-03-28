@@ -1,12 +1,13 @@
 package internal.mma_league.fighters.utils;
 
 import internal.mma_league.fighters.exception.NameGenerationException;
-import com.sun.tools.javac.Main;
+import org.springframework.core.io.ClassPathResource;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /*
 Utility class that generates random names from 2 text files.
@@ -32,7 +33,10 @@ public class NameGenerator {
 
     private static List<String> getAllNames(String filename){
         try{
-            return Files.readAllLines(Paths.get(Main.class.getClassLoader().getResource(filename).toURI()));
+            ClassPathResource resource = new ClassPathResource(filename);
+            InputStreamReader streamReader = new InputStreamReader(resource.getInputStream());
+
+            return new BufferedReader(streamReader).lines().collect(Collectors.toList());
         }catch (Exception ex){
             throw new NameGenerationException("Cannot read from file: " + filename);
         }

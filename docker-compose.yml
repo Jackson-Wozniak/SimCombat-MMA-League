@@ -3,7 +3,7 @@ services:
 
   sim_combat_server:
     build: ./simcombat-service
-    image: simcombat-service
+    image: simcombat_service
     deploy:
       restart_policy:
         condition: on-failure
