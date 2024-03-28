@@ -25,8 +25,10 @@ public class WeightClassConfiguration {
             int fighterCount = weightClassService.findFighterCount(name);
             if(fighterCount < 20){
                 fighterCount = weightClassService.createAndConfigureWeightClass(name, 20 - fighterCount);
+                logger.info("Weight class configured: " + name + " | " + fighterCount + " fighters");
+            }else{
+                logger.info("Weight class validated: " + name + " | " + fighterCount + " fighters");
             }
-            logger.info("Weight class configured: " + name + " | " + fighterCount + " fighters");
         });
     }
 }
