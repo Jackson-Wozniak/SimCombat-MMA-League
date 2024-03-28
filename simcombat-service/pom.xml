@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>internal.mma_league</groupId>
-    <artifactId>backend</artifactId>
+    <artifactId>simcombat-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>backend</name>
-    <description>backend</description>
+    <name>simcombat-service</name>
+    <description>Spring Boot service for simulating the SimCombat MMA League</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -65,7 +65,7 @@
                     <archive>
                         <manifest>
                             <!-- Jar file entry point -->
-                            <mainClass>internal.mma_league.MMALeagueSimulatorApplication</mainClass>
+                            <mainClass>internal.mma_league.SimCombatLeagueApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

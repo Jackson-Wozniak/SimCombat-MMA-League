@@ -5,5 +5,5 @@ RUN mvn -f /app/pom.xml clean package -DskipTests
 
 # Run stage
 FROM openjdk:17-jdk-alpine
-COPY --from=build /app/target/backend-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY --from=build /app/target/simcombat-service-0.0.1-SNAPSHOT.jar /app/app.jar
 ENTRYPOINT ["java", "-jar","/app/app.jar", "--spring.config.name=application-docker"]
