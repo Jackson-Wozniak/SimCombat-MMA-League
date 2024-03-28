@@ -1,6 +1,6 @@
 package internal.mma_league.league.enums;
 
-import internal.mma_league.fighters.exception.InvalidWeightClassException;
+import internal.mma_league.league.exceptions.InvalidWeightClassException;
 
 import java.util.Set;
 

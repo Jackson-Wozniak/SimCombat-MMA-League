@@ -1,6 +1,6 @@
 package internal.mma_league.league.controller;
 
-import internal.mma_league.fighters.exception.InvalidWeightClassException;
+import internal.mma_league.league.exceptions.InvalidWeightClassException;
 import internal.mma_league.league.enums.WeightClassNames;
 import internal.mma_league.league.payload.WeightClassDTO;
 import internal.mma_league.league.service.WeightClassService;

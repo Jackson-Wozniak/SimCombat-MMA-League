@@ -1,4 +1,4 @@
-package internal.mma_league.fighters.exception;
+package internal.mma_league.league.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

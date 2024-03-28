@@ -1,6 +1,6 @@
 package internal.mma_league.fighters.utils;
 
-import internal.mma_league.fighters.exception.InvalidWeightClassException;
+import internal.mma_league.league.exceptions.InvalidWeightClassException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
