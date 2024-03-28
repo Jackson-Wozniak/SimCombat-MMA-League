@@ -1,5 +1,6 @@
 package internal.mma_league.fighters.entity;
 
+import internal.mma_league.events.enums.Outcome;
 import internal.mma_league.fighters.enums.ChampionRank;
 import org.junit.jupiter.api.Test;
 
@@ -68,5 +69,90 @@ public class FighterTest {
         assertEquals(1, Fighter.myClassComparator.compare(f1, f2));
         f1.getAttributes().setGrapplingAbility(50);
         assertEquals(-1, Fighter.myClassComparator.compare(f1, f2));
+    }
+
+    @Test
+    void incremementRecord(){
+        Fighter fighter = new Fighter.Builder("F1", 155)
+                .height(66)
+                .birthday(LocalDate.of(1, 1, 1))
+                .striking(100, 100)
+                .grappling(100, 100)
+                .build();
+        FighterRecord record = fighter.getStats().getRecord();
+        assertEquals(0, record.getWins());
+        assertEquals(0, record.getLosses());
+        assertEquals(0, record.getKnockouts());
+        assertEquals(0, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(true, Outcome.KNOCKOUT);
+        assertEquals(1, record.getWins());
+        assertEquals(0, record.getLosses());
+        assertEquals(1, record.getKnockouts());
+        assertEquals(0, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(true, Outcome.KNOCKOUT);
+        assertEquals(2, record.getWins());
+        assertEquals(0, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(0, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(true, Outcome.SUBMISSION);
+        assertEquals(3, record.getWins());
+        assertEquals(0, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(1, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(true, Outcome.DECISION);
+        assertEquals(4, record.getWins());
+        assertEquals(0, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(1, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(false, Outcome.DECISION);
+        assertEquals(4, record.getWins());
+        assertEquals(1, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(1, record.getSubmissions());
+        assertEquals(0, record.getTimesFinished());
+
+        fighter.incrementRecord(false, Outcome.KNOCKOUT);
+        assertEquals(4, record.getWins());
+        assertEquals(2, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(1, record.getSubmissions());
+        assertEquals(1, record.getTimesFinished());
+
+        fighter.incrementRecord(false, Outcome.SUBMISSION);
+        assertEquals(4, record.getWins());
+        assertEquals(3, record.getLosses());
+        assertEquals(2, record.getKnockouts());
+        assertEquals(1, record.getSubmissions());
+        assertEquals(2, record.getTimesFinished());
+    }
+
+    @Test
+    void getFormattedRecord(){
+        Fighter fighter = new Fighter.Builder("F1", 155)
+                .height(66)
+                .birthday(LocalDate.of(1, 1, 1))
+                .striking(100, 100)
+                .grappling(100, 100)
+                .build();
+
+        assertEquals("0-0", fighter.getFormattedRecord());
+
+        for(int i = 1; i < 100; i++){
+            fighter.incrementRecord(true, Outcome.DECISION);
+            assertEquals(i + "-" + (i - 1), fighter.getFormattedRecord());
+
+            fighter.incrementRecord(false, Outcome.DECISION);
+            assertEquals(i + "-" + i, fighter.getFormattedRecord());
+        }
     }
 }

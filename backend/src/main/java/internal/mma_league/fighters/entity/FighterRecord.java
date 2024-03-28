@@ -1,5 +1,6 @@
 package internal.mma_league.fighters.entity;
 
+import internal.mma_league.events.enums.Outcome;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
@@ -35,5 +36,32 @@ public class FighterRecord {
 
     public int totalFights(){
         return this.wins + this.losses;
+    }
+
+    public void incrementWins(){
+        this.wins += 1;
+    }
+
+    public void incrementLosses(){
+        this.losses += 1;
+    }
+
+    public void incrementOutcomes(Outcome outcome, boolean wonFight){
+        switch (outcome){
+            case KNOCKOUT:
+                if(wonFight){
+                    this.knockouts += 1;
+                }else{
+                    this.timesFinished += 1;
+                }
+                break;
+            case SUBMISSION:
+                if(wonFight){
+                    this.submissions += 1;
+                }else{
+                    this.timesFinished += 1;
+                }
+                break;
+        }
     }
 }

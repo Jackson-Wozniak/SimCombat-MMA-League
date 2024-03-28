@@ -1,5 +1,6 @@
 package internal.mma_league.fighters.entity;
 
+import internal.mma_league.events.enums.Outcome;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -101,6 +102,16 @@ public class Fighter {
 
     public String getFormattedRecord(){
         return stats.getRecord().getWins() + "-" + stats.getRecord().getLosses();
+    }
+
+    public void incrementRecord(boolean wonFight, Outcome outcome){
+        if(wonFight){
+            this.stats.getRecord().incrementWins();
+            this.stats.getRecord().incrementOutcomes(outcome, true);
+        }else{
+            this.stats.getRecord().incrementLosses();
+            this.stats.getRecord().incrementOutcomes(outcome, false);
+        }
     }
 
     public static class Builder{
