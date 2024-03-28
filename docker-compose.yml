@@ -2,8 +2,8 @@ version: "3.8"
 services:
 
   sim_combat_server:
-    build: ./backend
-    image: backend
+    build: ./simcombat-service
+    image: simcombat-service
     deploy:
       restart_policy:
         condition: on-failure

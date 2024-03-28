@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MMALeagueSimulatorApplication {
+public class SimCombatLeagueApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MMALeagueSimulatorApplication.class, args);
+        SpringApplication.run(SimCombatLeagueApplication.class, args);
     }
 
 }
